@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121212">
+  <title>Feastly — Food Ordering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#home">🍽️ Feastly<span>.</span></a>
+    <nav><a href="#home">Home</a><a href="#menu">Explore</a><a href="#deals">Deals</a></nav>
+    <div class="header-actions"><button class="location-pill" id="locationBtn">📍 <span>Deliver to</span> <strong>Choose address⌄</strong></button><button class="orders-btn" id="myOrdersBtn">My Orders</button><button class="profile-btn" id="profileBtn" aria-label="Login or account">👤 <span id="accountLabel">Login</span></button><button class="cart-pill" id="openCart">🛒 <span class="cart-label">Cart</span> <b id="cartCount">0</b></button></div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="live-note"><span class="live-dot"></span> FRESHLY MADE • DELIVERED WITH LOVE</div>
+        <h1>Good food.<br>Great mood.<br><span>Delivered.</span></h1>
+        <p class="hero-text">Your cravings, our kitchen. Discover delicious meals made fresh and delivered to your door.</p>
+        <div class="hero-search"><span>⌕</span><input id="heroSearch" type="search" placeholder="Search biryani, pizza, momos..." aria-label="Search menu"><button id="searchGo">Search</button></div>
+        <div class="hero-trust"><span>⭐ 4.8/5 customer rating</span><span>🛵 Fast delivery</span><span>🥬 Fresh ingredients</span></div>
+      </div>
+      <div class="hero-art"><div class="hero-glow"></div><div class="hero-dish">🍜</div><div class="float-chip chip-top">🔥 Trending today</div><div class="float-chip chip-bottom">⭐ 4.9 <small>Top rated</small></div><div class="hero-orbit orbit-one">🍕</div><div class="hero-orbit orbit-two">🥑</div></div>
+    </section>
+
+    <section class="deal-strip" id="deals"><div class="deal-icon">🎉</div><div><strong>Hungry for a deal?</strong><p>Get 20% off your first demo order with code <b>FEASTLY20</b></p></div><span class="deal-tag">DEMO OFFER</span></section>
+
+    <section class="content-section category-section">
+      <div class="section-heading"><div><p class="eyebrow">WHAT ARE YOU CRAVING?</p><h2>Explore <span>categories</span></h2></div><p>Find your next favourite bite.</p></div>
+      <div class="category-row" id="categories">
+        <button class="category active" data-category="All"><span>🍽️</span>All items</button>
+        <button class="category" data-category="Burger"><span>🍔</span>Burgers</button>
+        <button class="category" data-category="Pizza"><span>🍕</span>Pizza</button>
+        <button class="category" data-category="Indian"><span>🍛</span>Indian</button>
+        <button class="category" data-category="Pasta"><span>🍝</span>Pasta</button>
+        <button class="category" data-category="Dessert"><span>🍰</span>Desserts</button>
+        <button class="category" data-category="Tacos"><span>🌮</span>Tacos</button>
+        <button class="category" data-category="Drinks"><span>🥤</span>Drinks</button>
+      </div>
+    </section>
+
+    <section class="content-section menu-section" id="menu">
+      <div class="section-heading"><div><p class="eyebrow">MADE FOR YOUR CRAVINGS</p><h2>Must-try <span>gourmet dishes</span></h2></div><div class="menu-tools"><span class="rating-note">★ 4.5+ top rated</span><input type="search" id="searchInput" placeholder="⌕  Search dishes..." aria-label="Search dishes"></div></div>
+      <div class="food-grid" id="foodGrid"></div>
+      <p class="no-results" id="noResults" hidden>No dishes found. Try another search or category.</p>
+    </section>
+<section class="bottom-promo"><div><p class="eyebrow">GOOD FOOD IS ALWAYS A GOOD IDEA</p><h2>Make today <span>delicious.</span></h2><p>Pick a favourite and build your perfect order.</p></div><a class="primary-btn" href="#menu">Explore menu <span>→</span></a><div class="promo-emoji">🍟 🥤 🍕</div></section>
+  </main>
+
+  <footer><a class="logo" href="#home">🍽️ Feastly<span>.</span></a><p>© <span id="year"></span> Feastly. Made for food lovers.</p><p class="disclaimer">Student/demo project — no real restaurant orders or payments.</p></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawer-head"><div><p class="eyebrow">YOUR ORDER</p><h2>Your cart <span class="cart-subtitle">· delicious choices</span></h2></div><button class="close-btn" id="closeCart" aria-label="Close cart">✕</button></div>
+    <div id="cartItems" class="cart-items"><div class="empty-cart">Your cart is waiting for something tasty 😋</div></div>
+    <div class="instructions"><label for="orderInstructions">Cooking instructions (optional)</label><textarea id="orderInstructions" rows="2" placeholder="Less spicy, extra sauce..."></textarea></div>
+    <div class="cart-bottom"><div class="total-row"><span>Item total</span><strong id="subtotal">₹0</strong></div><div class="total-row muted"><span>Delivery fee</span><span id="deliveryFee">₹0</span></div><div class="total-row muted"><span>Platform fee</span><span id="platformFee">₹0</span></div><div class="total-row muted"><span>GST (5% demo estimate)</span><span id="gstFee">₹0</span></div><div class="total-row grand-total"><span>Total</span><strong id="total">₹0</strong></div><button class="primary-btn checkout-btn" id="checkoutBtn">Proceed to checkout →</button><small class="cart-note">Demo only. No real payment is taken.</small></div>
+  </aside>
+
+  <dialog id="checkoutDialog"><form id="checkoutForm"><button type="button" class="close-btn dialog-close" id="closeCheckout" aria-label="Close">✕</button><p class="eyebrow">ALMOST THERE</p><h2>Delivery details</h2><label for="customerName">Full name</label><input id="customerName" required placeholder="Enter your name"><label for="customerPhone">Phone number</label><input id="customerPhone" required inputmode="tel" pattern="[0-9 +()-]{10,}" placeholder="Enter phone number"><label for="customerAddress">Delivery address</label><textarea id="customerAddress" required rows="3" placeholder="House no., street, city"></textarea><label for="paymentMethod">Payment method</label><select id="paymentMethod"><option>Cash on delivery (demo)</option><option>UPI (demo only)</option><option>Card (demo only)</option></select><button class="primary-btn full-btn" type="submit">Place demo order ✓</button></form></dialog>
+
+  <dialog id="ordersDialog"><div class="orders-dialog-head"><div><p class="eyebrow">ORDER HISTORY</p><h2>My Orders</h2></div><button class="close-btn" id="closeOrders" aria-label="Close">✕</button></div><div id="ordersList" class="orders-list"><p class="muted">Loading your orders…</p></div></dialog>
+
+  <dialog id="authDialog"><form id="authForm">
+    <button type="button" class="close-btn dialog-close" id="closeAuth" aria-label="Close">✕</button>
+    <p class="eyebrow">WELCOME TO FEASTLY</p><h2 id="authTitle">Login</h2>
+    <div id="authNameWrap" hidden><label for="authName">Full name</label><input id="authName" autocomplete="name" placeholder="Your name"></div>
+    <label for="authEmail">Email address</label><input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com">
+    <label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters">
+    <p id="authMessage" class="auth-message" role="status"></p>
+    <button class="primary-btn full-btn" id="authSubmit" type="submit">Login</button>
+    <button class="auth-switch" id="authSwitch" type="button">New here? Create an account</button>
+    <button class="auth-switch" id="logoutBtn" type="button" hidden>Log out</button>
+  </form></dialog>
+  <dialog id="addressDialog"><form id="addressForm"><button type="button" class="close-btn dialog-close" id="closeAddress" aria-label="Close">✕</button><p class="eyebrow">DELIVERY LOCATION</p><h2>Where should we deliver?</h2><label for="addressInput">Your address</label><textarea id="addressInput" rows="3" required placeholder="Enter your delivery address"></textarea><button class="primary-btn full-btn" type="submit">Save address</button></form></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
